@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sajjad Portfolio</title>
+    <style>
+        body  {
+            background-color: rgb(49, 3, 91);
+            color: aliceblue;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        nav{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 50px;
+            background-color: rgb(103, 24, 176);
+        }
+        nav ul{
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li{
+            margin: 0 20px;
+        }
+        nav ul li a {
+            color: aliceblue;
+            text-decoration: none;
+
+        }
+        nav ul li a:hover{
+            color: rgb(155, 69, 235);
+            font-size: 1.2rem;
+        }
+        .left{
+            font-size: 2rem;
+        }
+        .header-content {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .header-content h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        .header-content h2 {
+            font-size: 2rem;
+            margin: 10px 0;
+        }
+        .header-content p {
+            font-size: 1.2rem;
+        }
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .education, .skills, .experience, .projects, .contact {
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact form input, .contact form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        .contact form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(103, 24, 176);
+            color: aliceblue;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .firstsection{
+            display: flex;
+            justify-content: space-around;
+            margin: 80px 0;
+
+        }
+        .firstsection >div{
+            width: 30;
+
+        }
+        .leftsection{
+            font-size: 3rem;
+            margin: 70px 0;
+        }
+       img{
+        margin-top: 50pt;
+        border-radius: 50%;
+       }
+       .purple{
+        color: rgb(155, 69, 235);
+       }
+       #element{
+        color: rgb(155, 69, 235);
+       }
+       .conclusion{
+        font-size: large;
+        background-color: rgb(30, 7, 59);
+        color: aliceblue;
+        margin-top: 30pt;
+        text-align: center;
+       }
+       hr.line{
+        border: solid 1px;
+
+        margin: 40px 84px;
+       }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="left">Sajjad's Portfolio</div>
+            <div class="right">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact Me</a></li>
+                </ul>
+            </div>
+        </nav>
+        <main>
+            <section class="firstsection">
+                <div class="leftsection">
+                Hi! My name is <span class="purple" >Sajjad Ali</span>
+                <div>and I am a passionate</div>
+                <span id="element"></span>
+                </div>
+                <div class="rightsecion">
+                    <img src="c:\Users\DELL\OneDrive\Pictures\my pic.jpg" alt="portfilio picture" class="src" width="200" height="200">
+                </div>
+            </section>
+        </main>
+        <hr class="line" >
+
+
+    </header>
+
+    <section class="section education" id="about">
+        <h2>Education</h2>
+        <p >Underguradage student of Computer Science,  UMT, 4th semester</p>
+        <p>Intermediate, General M.Musa collage, 2021</p>
+        <p>Matriculation, Hzara society high School, 2019</p>
+
+    </section>
+
+    <section class="section skills" id="skills">
+        <h2>Skills</h2>
+        <p>HTML, CSS, JavaScript</p>
+        <p>React</p>
+        <p>SQL, django</p>
+    </section>
+
+    <section class="section experience" id="experience">
+        <h2>Experience</h2>
+        <p>Junior Developer at ZNZ</p>
+        <p>Intern at ZNZ Organization</p>
+    </section>
+
+    <section class="section projects" id="projects">
+        <h2>Projects</h2>
+        <p>Project 2: Portfolio Website</p>
+        <p>Project 3: Online Calculator </p>
+        <p>Project 3: Online currency exchange website </p>
+    </section>
+
+    <section class="section contact" id="contact">
+        <h2>Contact Me</h2>
+        <form id="contactForm" method="post" >
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+        <div class="conclusion">
+            www.sajjadali portfilio.com||All right reserved
+        </div>
+    </section>
+<table border="2px "  >
+    <thead>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Message</th>
+
+    </thead>
+    <tbody>
+    {% for ob in obj %}
+    <tr>
+        <td>{{ob.name}}</td>
+        <td>{{ob.email}}</td>
+        <td>{{ob.message}}</td>
+        <td>
+
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html
